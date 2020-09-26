@@ -1,0 +1,20 @@
+
+.Card{
+    max-width: 200px;
+    width: 100%;
+    box-shadow: 0px 8px 40px -10px #484848;
+    border-radius: 5px 5px 0 0;
+    
+    .Header{
+        border-radius: 5px 5px 0 0;
+        background-color: #ab9cf0;
+    }
+
+
+    .Content{
+        height: 200px;
+        display: grid !important;
+        grid-template-columns: repeat(3, 100px);
+        grid-template-rows: repeat(3, 100px);
+    }
+}
