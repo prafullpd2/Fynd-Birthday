@@ -94,6 +94,22 @@ function App() {
     }, {
       name: "Viserys Targaryen",
       birthday: "12/06/1984"
+    },
+    {
+      name: "Gandalf White",
+      birthday: "11/30/1991"
+    },
+    {
+      name: "Saruman",
+      birthday: "11/23/1991"
+    },
+    {
+      name: "Sauron",
+      birthday: "11/20/1991"
+    },
+    {
+      name: "Grey Wizard",
+      birthday: "11/30/1991"
     }
 ];
 type T = { [n: string]: Info[]}
@@ -109,6 +125,7 @@ let filtered2: T = {
 const [val, setVal] = useState<Info[]>(def);
 const [year, setYear] = useState<number>(1991);
 const [filtered, setFiltered] = useState<T>(filtered2);
+const [changed, setChanged] = useState<boolean>(false);
 
 const parseInfo = ( arr: Info[], year: number) => {
 
@@ -133,11 +150,8 @@ const parseInfo = ( arr: Info[], year: number) => {
   return res;
 }
 const onYearChange = (year: number) => {
-
-  setYear(year)
-
-
-
+  setYear(year);
+  setChanged(true);
 }
 
 
@@ -147,10 +161,13 @@ const onTextChange = (info:string) => {
   } catch(e){
     setVal(eval(info));
   }
-  
+  setChanged(true)
 }
 const update = () => {
-  parseInfo(val,year)
+  if(changed){
+    parseInfo(val,year)
+    setChanged(false);
+  }
 }
 
 useEffect(() => {
